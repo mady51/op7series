@@ -207,6 +207,18 @@ static void init_suspend_monitor_thread(void)
 }
 #endif
 
+/**
+ * pm_suspend_default_s2idle - Check if suspend-to-idle is the default suspend.
+ *
+ * Return 'true' if suspend-to-idle has been selected as the default system
+ * suspend method.
+ */
+bool pm_suspend_default_s2idle(void)
+{
+	return mem_sleep_current == PM_SUSPEND_TO_IDLE;
+}
+EXPORT_SYMBOL_GPL(pm_suspend_default_s2idle);
+
 void s2idle_set_ops(const struct platform_s2idle_ops *ops)
 {
 	lock_system_sleep();

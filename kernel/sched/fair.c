@@ -5334,7 +5334,6 @@ enqueue_task_fair(struct rq *rq, struct task_struct *p, int flags)
 	bool prefer_idle = sched_feat(EAS_PREFER_IDLE) ?
 				(schedtune_prefer_idle(p) > 0) : 0;
 	int idle_h_nr_running = idle_policy(p->policy);
-
 #ifdef CONFIG_SCHED_WALT
 	p->misfit = !task_fits_max(p, rq->cpu);
 #endif
@@ -5429,7 +5428,6 @@ static void dequeue_task_fair(struct rq *rq, struct task_struct *p, int flags)
 	struct sched_entity *se = &p->se;
 	int task_sleep = flags & DEQUEUE_SLEEP;
 	int idle_h_nr_running = idle_policy(p->policy);
-	bool was_sched_idle = sched_idle_rq(rq);
 
 	/*
 	 * The code below (indirectly) updates schedutil which looks at

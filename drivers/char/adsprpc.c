@@ -4358,6 +4358,14 @@ static int __init fastrpc_device_init(void)
 		goto device_create_bail;
 	}
 	me->rpmsg_register = 1;
+
+	me->wake_source = wakeup_source_register(NULL, "adsprpc");
+	VERIFY(err, !IS_ERR_OR_NULL(me->wake_source));
+	if (err) {
+		pr_err("adsprpc: Error: %s: wakeup_source_register failed with err %d\n",
+					__func__, PTR_ERR(me->wake_source));
+		goto device_create_bail;
+	}
 	return 0;
 device_create_bail:
 	for (i = 0; i < NUM_CHANNELS; i++) {

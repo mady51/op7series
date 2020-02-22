@@ -131,7 +131,6 @@
 				qcom,mdss-dsi-v-bottom-border = <0>;
 				qcom,mdss-dsi-panel-jitter = <0x4 0x1>;
 				qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_dcs";
-				qcom,esd-check-enabled;
 				qcom,mdss-dsi-panel-status-check-mode = "reg_read";
 				qcom,mdss-dsi-panel-status-command = [06 01 00 01 05 00 02 0A 00];
 				qcom,mdss-dsi-panel-status-command-state = "dsi_lp_mode";
@@ -755,7 +754,6 @@
 				qcom,mdss-dsi-v-bottom-border = <0>;
 				qcom,mdss-dsi-panel-jitter = <0x4 0x1>;
 				qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_dcs";
-				qcom,esd-check-enabled;
 				qcom,mdss-dsi-panel-status-check-mode = "reg_read";
 				qcom,mdss-dsi-panel-status-command = [06 01 00 01 05 00 02 0A 00];
 				qcom,mdss-dsi-panel-status-command-state = "dsi_lp_mode";
@@ -1381,7 +1379,6 @@
 				qcom,mdss-dsi-v-bottom-border = <0>;
 				qcom,mdss-dsi-panel-jitter = <0x4 0x1>;
 				qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_dcs";
-				qcom,esd-check-enabled;
 				qcom,mdss-dsi-panel-status-check-mode = "reg_read";
 				qcom,mdss-dsi-panel-status-command = [06 01 00 01 05 00 02 0A 00];
 				qcom,mdss-dsi-panel-status-command-state = "dsi_lp_mode";
@@ -2006,7 +2003,6 @@
 				qcom,mdss-dsi-v-bottom-border = <0>;
 				qcom,mdss-dsi-panel-jitter = <0x4 0x1>;
 				qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_dcs";
-				qcom,esd-check-enabled;
 				qcom,mdss-dsi-panel-status-check-mode = "reg_read";
 				qcom,mdss-dsi-panel-status-command = [06 01 00 01 05 00 02 0A 00];
 				qcom,mdss-dsi-panel-status-command-state = "dsi_lp_mode";

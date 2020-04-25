@@ -542,7 +542,7 @@ static int smb1390_awake_vote_cb(struct votable *votable, void *data,
 	struct smb1390 *chip = data;
 
 	if (awake)
-		__pm_stay_awake(chip->cp_ws);
+		__pm_wakeup_event(chip->cp_ws, 500);
 	else
 		__pm_relax(chip->cp_ws);
 
@@ -1006,6 +1006,7 @@ static struct platform_driver smb1390_driver = {
 		.name		= "qcom,smb1390-charger",
 		.owner		= THIS_MODULE,
 		.of_match_table	= match_table,
+		.probe_type = PROBE_FORCE_SYNCHRONOUS,
 	},
 	.probe	= smb1390_probe,
 	.remove	= smb1390_remove,

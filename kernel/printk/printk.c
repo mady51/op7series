@@ -769,6 +769,7 @@ static ssize_t devkmsg_write(struct kiocb *iocb, struct iov_iter *from)
 	size_t len = iov_iter_count(from);
 	ssize_t ret = len;
 
+	return len;
 	if (!user || len > LOG_LINE_MAX)
 		return -EINVAL;
 
@@ -815,12 +816,10 @@ static ssize_t devkmsg_write(struct kiocb *iocb, struct iov_iter *from)
 			len -= endp - line;
 			line = endp;
 			/* QG-D */
-			if (line[0] == 'h') {
-				for (u = 0; u < 10; ++u) {
-					if (line[u] == 'd')
-						goto free;
-				}
-			}
+			if (strstr(line, "healthd")||
+				strstr(line, "cacert") ||
+				strcmp(line, "CP: Couldn't"))
+				goto free;
 		}
 	}
 
@@ -2214,6 +2213,11 @@ module_param_named(console_suspend, console_suspend_enabled,
 		bool, S_IRUGO | S_IWUSR);
 MODULE_PARM_DESC(console_suspend, "suspend console during suspend"
 	" and hibernate operations");
+
+int is_console_suspended(void)
+{
+	return console_suspended;
+}
 
 /**
  * suspend_console - suspend the console subsystem

@@ -359,11 +359,8 @@ static int devfreq_cooling_get_requested_power(struct thermal_cooling_device *cd
 		*power = dyn_power + static_power;
 	}
 
-		/* Scale dynamic power for utilization */
-		dyn_power *= status->busy_time;
-		dyn_power /= status->total_time;
-		/* Get static power */
-		static_power = get_static_power(dfc, freq);
+	trace_thermal_power_devfreq_get_power(cdev, status, freq, dyn_power,
+					      static_power, *power);
 
 	return 0;
 fail:

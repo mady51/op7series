@@ -945,17 +945,14 @@ static int sugov_init(struct cpufreq_policy *policy)
 		goto stop_kthread;
 	}
 
-	tunables->up_rate_limit_us = 0;
-	//tunables->up_rate_limit_us =
-	//			cpufreq_policy_transition_delay_us(policy);
-	tunables->down_rate_limit_us = 0;
-	//tunables->down_rate_limit_us =
-	//			cpufreq_policy_transition_delay_us(policy);
-	tunables->hispeed_load = 90;
-	//tunables->hispeed_load = DEFAULT_HISPEED_LOAD;
+	tunables->up_rate_limit_us =
+				cpufreq_policy_transition_delay_us(policy);
+	tunables->down_rate_limit_us =
+				cpufreq_policy_transition_delay_us(policy);
+	tunables->hispeed_load = DEFAULT_HISPEED_LOAD;
 	tunables->hispeed_freq = 1209600;
 
-	tunables->iowait_boost_enable = true;
+	tunables->iowait_boost_enable = false;
 
 	policy->governor_data = sg_policy;
 	sg_policy->tunables = tunables;

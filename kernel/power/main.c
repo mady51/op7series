@@ -15,12 +15,22 @@
 #include <linux/workqueue.h>
 #include <linux/debugfs.h>
 #include <linux/seq_file.h>
+#include <linux/suspend.h>
+#include <linux/syscalls.h>
 
 #include "power.h"
 
 DEFINE_MUTEX(pm_mutex);
 
 #ifdef CONFIG_PM_SLEEP
+
+void sys_sync_helper(void)
+{
+	pr_info("Syncing filesystems ... ");
+	sys_sync();
+	pr_cont("done.\n");
+}
+EXPORT_SYMBOL_GPL(sys_sync_helper);
 
 /* Routines for PM-transition notifications */
 

@@ -5749,8 +5749,8 @@ static int sde_crtc_onscreenfinger_atomic_check(struct sde_crtc_state *cstate,
 			fppressed_index = i;
 			fppressed_index_rt = i;
 		}
-                if (mode ==3)
-                    aod_index = i;
+        if (mode ==3)
+            aod_index = i;
 	}
 	if(fp_index >=0 && dim_mode!=0)
 		display->panel->dim_status = true;
